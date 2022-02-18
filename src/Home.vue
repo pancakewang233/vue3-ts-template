@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import SideBar from './components/SideBar.vue';
 import HeaderBar from './components/HeaderBar.vue';
+import Mainner from './components/Mainner.vue';
 </script>
 
 <template>
@@ -11,6 +12,9 @@ import HeaderBar from './components/HeaderBar.vue';
         <router-link to="/page">Home</router-link>
         <router-link to="/about">About</router-link>
       </SideBar>
+      <Mainner>
+        <router-view></router-view>
+      </Mainner>
     </div>
   </div>
 </template>

@@ -2,10 +2,11 @@
 import {ref, reactive} from 'vue';
 import type {ElForm} from 'element-plus';
 import {validateName, validatePass} from './validate';
+import { useRouter } from "vue-router";
 
 type FormInstance = InstanceType<typeof ElForm>
 const ruleFormRef = ref<FormInstance>();
-
+const router = useRouter();
 const ruleForm = reactive({
   name: '',
   password: ''
@@ -21,6 +22,9 @@ const submitForm = (formEl: FormInstance | undefined) => {
   formEl.validate((valid) => {
     if (valid) {
       console.log('login?');
+      router.push({
+        path: "/page"
+      });
     } else {
       console.log('error submit!');
       return false;

@@ -9,9 +9,11 @@
 
 <style scoped>
 .sidebar{
-  width: 16%;
+  width: 14%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  border: 1px solid blue;
 }
 
 .sidebar :deep(.router-link-active) {

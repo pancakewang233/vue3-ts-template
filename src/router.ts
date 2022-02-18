@@ -4,14 +4,17 @@ const Page = () => import('./views/Page.vue');
 const About = () => import('./views/About.vue');
 const Login = () => import('./views/Login/Login.vue');
 const Register = () => import('./views/Login/Register.vue');
+const Home = () =>import('./Home.vue')
 
 const routes = [
   {path: '/', component: Login},
   {path: '/login', component: Login},
   {path: '/register', component: Register},
   // 只有经过身份验证的用户才能进入首页
-  {path: '/page', component: Page, meta: {requiresAuth: true}},
-  {path: '/about', component: About, meta: {requiresAuth: true}},
+  {path: '/home', component: Home, meta: {requiresAuth: true}, children:[
+      {path: '/page', component: Page, meta: {requiresAuth: true}},
+      {path: '/about', component: About, meta: {requiresAuth: true}},
+    ]},
 ];
 
 export const router = createRouter({
