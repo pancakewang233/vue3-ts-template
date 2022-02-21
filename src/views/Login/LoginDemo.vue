@@ -6,7 +6,7 @@ import { useRouter } from "vue-router";
 
 type FormInstance = InstanceType<typeof ElForm>
 const ruleFormRef = ref<FormInstance>();
-const router = useRouter();
+const index = useRouter();
 const ruleForm = reactive({
   name: '',
   password: ''

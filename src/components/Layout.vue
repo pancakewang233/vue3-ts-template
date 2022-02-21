@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import SideBar from './components/SideBar.vue';
-import HeaderBar from './components/HeaderBar.vue';
-import Mainner from './components/Mainner.vue';
+import SideBar from './SideBar.vue';
+import HeaderBar from './HeaderBar.vue';
+import Mainner from './Mainner.vue';
 </script>
 
 <template>
@@ -9,8 +9,8 @@ import Mainner from './components/Mainner.vue';
     <HeaderBar></HeaderBar>
     <div class="main">
       <SideBar>
-        <router-link to="/page">Home</router-link>
-        <router-link to="/about">About</router-link>
+        <router-link to="/form/page">Home</router-link>
+        <router-link to="/form/about">About</router-link>
       </SideBar>
       <Mainner>
         <router-view></router-view>
