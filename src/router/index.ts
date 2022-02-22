@@ -1,14 +1,17 @@
-import {createRouter, createWebHashHistory} from 'vue-router';
+
+import adminRoutes from '@/mock/user-admin';
+import { createRouter, createWebHashHistory } from 'vue-router';
 
 const Page = () => import('../views/form/Page.vue');
 const About = () => import('../views/form/About.vue');
 const Login = () => import('../views/Login/Login.vue');
-const Home = () =>import('../components/Layout.vue')
-const NotFound = ()=>import('../views/404.vue')
-const Dashboard = ()=>import('../views/dashboard/index.vue')
+const Home = () => import('../components/Layout.vue')
+const NotFound = () => import('../views/404.vue')
+const Dashboard = () => import('../views/dashboard/index.vue')
 
-export const routes = [
-  { path: '/',
+const routes = [
+  {
+    path: '/',
     component: Home,
     redirect: '/dashboard',
     children: [{
@@ -19,7 +22,7 @@ export const routes = [
     }]
   },
   // 只有经过身份验证的用户才能进入首页
-  {path: '/login', component: Login},
+  { path: '/login', component: Login },
   {
     path: '/404',
     component: NotFound,

@@ -2,7 +2,7 @@
 import SideBar from './SideBar.vue';
 import HeaderBar from './HeaderBar.vue';
 import Mainner from './Mainner.vue';
-
+import adminRoutes from '@/mock/user-admin'
 </script>
 
 <template>
@@ -10,7 +10,7 @@ import Mainner from './Mainner.vue';
     <HeaderBar></HeaderBar>
     <div class="main">
       <SideBar>
-<!--        <router-link :to="item.path" v-for="(item,index) in routes" :key="index">{{item}}</router-link>-->
+        <router-link :to="item.path" v-for="(item,index) in adminRoutes[0].children" :key="index">{{item.meta.title}}</router-link>
       </SideBar>
       <Mainner>
         <router-view></router-view>

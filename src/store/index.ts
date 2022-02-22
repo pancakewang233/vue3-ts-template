@@ -1,8 +1,7 @@
-import {defineStore, acceptHMRUpdate} from 'pinia';
-import {resetRouter} from '@/router';
-import {ElMessage} from 'element-plus';
-import adminRoutes from '../../mock/user-admin';
-import editorRoutes from '../../mock/user-editor';
+import { defineStore, acceptHMRUpdate } from 'pinia';
+import { resetRouter } from '@/router';
+import { ElMessage } from 'element-plus';
+
 
 type UserInfo = {
   username: string,
@@ -26,7 +25,7 @@ export const useUserStore = defineStore({
     login: function (userInfo: UserInfo) {
       return new Promise(resolve => {
         sessionStorage.setItem('user', JSON.stringify(userInfo));
-        this.$patch({...userInfo});
+        this.$patch({ ...userInfo });
         // @ts-ignore
         resolve();
       });
@@ -40,21 +39,6 @@ export const useUserStore = defineStore({
         if (!value) {
           return ElMessage('Verification failed, please Login again.');
         } else {
-          if (value === 'admin') {
-            // @ts-ignore
-            this.$patch({
-              username: value,
-              isAdmin: true,
-              dynamicRoutes: adminRoutes
-            });
-          } else {
-            // @ts-ignore
-            this.$patch({
-              username: value,
-              isAdmin: false,
-              dynamicRoutes: editorRoutes
-            });
-          }
         }
       });
     },
