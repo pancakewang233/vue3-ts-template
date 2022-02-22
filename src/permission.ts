@@ -2,6 +2,7 @@ import {router} from '@/router'
 import { ElMessage } from 'element-plus'
 import { getToken } from '@/utils/auth' // get token from cookie
 import {useUserStore} from '@/store'
+import {fnAddDynamicMenuRoutes} from '@/router/getAsyncRouter'
 
 const whiteList = ['/login'] // no redirect whitelist
 
@@ -22,7 +23,6 @@ router.beforeEach(async(to, from, next) => {
         try {
           // get user info
           await user.getInfo()
-
           next()
         } catch (error) {
           // remove token and go to login page to re-login
