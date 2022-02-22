@@ -7,7 +7,17 @@ const Home = () =>import('../components/Layout.vue')
 const NotFound = ()=>import('../views/404.vue')
 const Dashboard = ()=>import('../views/dashboard/index.vue')
 
-const routes = [
+export const routes = [
+  { path: '/',
+    component: Home,
+    redirect: '/dashboard',
+    children: [{
+      path: '/dashboard',
+      component: Dashboard,
+      name: 'Dashboard',
+      meta: { title: 'Dashboard' }
+    }]
+  },
   // 只有经过身份验证的用户才能进入首页
   {path: '/login', component: Login},
   {
@@ -15,44 +25,12 @@ const routes = [
     component: NotFound,
     hidden: true
   },
-  { path: '/',
-    component: Home,
-    redirect: '/dashboard',
-    children: [{
-      path: 'dashboard',
-      name: 'Dashboard',
-      component: Dashboard,
-      meta: { title: 'Dashboard' }
-    }]
-  },
-  { path: '/form',
-    component: Home,
-    redirect: '/form/page',
-    name:'Form',
-    children: [
-      {
-        path: 'page',
-        name: 'Page',
-        component: Page,
-        meta: { title: 'Page' }
-      },
-      {
-        path: 'about',
-        name: 'About',
-        component: About,
-        meta: { title: 'About' }
-      }
-    ]
-  },
-  // 404 page must be placed at the end !!!
-  // 匹配所有路径  vue2使用*   vue3使用/:pathMatch(.*)*或/:pathMatch(.*)或/:catchAll(.*)
-  { path: "/:pathMatch(.*)*", redirect: '/404', hidden: true }
 ];
 
 export const router = createRouter({
   // 4. 内部提供了 history 模式的实现。为了简单起见，我们在这里使用 hash 模式。
   history: createWebHashHistory(),
-  routes,
+  routes
 });
 
 // Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465

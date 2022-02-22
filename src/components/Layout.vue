@@ -2,6 +2,7 @@
 import SideBar from './SideBar.vue';
 import HeaderBar from './HeaderBar.vue';
 import Mainner from './Mainner.vue';
+
 </script>
 
 <template>
@@ -9,8 +10,7 @@ import Mainner from './Mainner.vue';
     <HeaderBar></HeaderBar>
     <div class="main">
       <SideBar>
-        <router-link to="/form/page">Home</router-link>
-        <router-link to="/form/about">About</router-link>
+<!--        <router-link :to="item.path" v-for="(item,index) in routes" :key="index">{{item}}</router-link>-->
       </SideBar>
       <Mainner>
         <router-view></router-view>

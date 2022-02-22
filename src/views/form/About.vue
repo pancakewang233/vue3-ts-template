@@ -2,7 +2,7 @@
 </script>
 <template>
   <div>
-    About 123456789900
+    About 页面
   </div>
 </template>
 

@@ -25,7 +25,7 @@ const submitForm = (formEl: FormInstance | undefined) => {
   formEl.validate((valid) => {
     if (valid) {
       user.login(ruleForm).then(() => {
-        router.push({path: '/'})
+        router.push('/')
       })
     } else {
       console.log('error submit!');
@@ -50,9 +50,9 @@ const resetForm = (formEl: FormInstance | undefined) => {
         :rules="rules"
         label-width="120px"
         class="demo-ruleForm">
-      <el-form-item label="用户" prop="name">
+      <el-form-item label="用户" prop="username">
         <el-input
-            v-model="ruleForm.name"
+            v-model="ruleForm.username"
             autocomplete="off"
         ></el-input>
       </el-form-item>

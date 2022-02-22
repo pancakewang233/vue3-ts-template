@@ -2,6 +2,6 @@
 </script>
 <template>
 <div>
-    Page
+    Page 页面
 </div>
 </template>
