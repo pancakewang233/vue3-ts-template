@@ -1,8 +1,8 @@
-import request from '../utils/request'
+import request from '@/utils/request'
 
 type loginData = {
-  username:'',
-  password:''
+  username:string,
+  password:string
 }
 export function login(data:loginData) {
   return request({

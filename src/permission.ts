@@ -1,30 +1,32 @@
-import {router} from './router/index'
+import {router} from '@/router'
 import { ElMessage } from 'element-plus'
-import { getToken } from '../src/utils/auth' // get token from cookie
-import store from './store'
+import { getToken } from '@/utils/auth' // get token from cookie
+import {useUserStore} from '@/store'
+
 const whiteList = ['/login'] // no redirect whitelist
 
 router.beforeEach(async(to, from, next) => {
   // determine whether the user has logged in
   const hasToken = getToken()
+  const user = useUserStore()
 
   if (hasToken) {
     if (to.path === '/login') {
       // if is logged in, redirect to the home page
       next({ path: '/' })
     } else {
-      const hasGetUserInfo = store.getters.name
+      const hasGetUserInfo = user.name
       if (hasGetUserInfo) {
         next()
       } else {
         try {
           // get user info
-          await store.dispatch('user/getInfo')
+          await user.getInfo()
 
           next()
         } catch (error) {
           // remove token and go to login page to re-login
-          await store.dispatch('user/resetToken')
+          await user.resetToken()
           // @ts-ignore
           ElMessage.error(error || 'Has Error')
           next(`/login?redirect=${to.path}`)

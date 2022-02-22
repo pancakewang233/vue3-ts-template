@@ -6,7 +6,7 @@ import { useRouter } from "vue-router";
 
 type FormInstance = InstanceType<typeof ElForm>
 const ruleFormRef = ref<FormInstance>();
-const index = useRouter();
+const router = useRouter();
 const ruleForm = reactive({
   name: '',
   password: ''
@@ -21,10 +21,12 @@ const submitForm = (formEl: FormInstance | undefined) => {
   if (!formEl) return;
   formEl.validate((valid) => {
     if (valid) {
-      console.log('login?');
-      router.push({
-        path: "/page"
-      });
+      this.$store.dispatch('user/login', this.loginForm).then(() => {
+        this.$router.push({ path: this.redirect || '/' })
+        this.loading = false
+      }).catch(() => {
+        this.loading = false
+      })
     } else {
       console.log('error submit!');
       return false;

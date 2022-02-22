@@ -55,3 +55,23 @@ export const router = createRouter({
   routes,
 });
 
+// Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
+export function resetRouter() {
+  const newRouter = createRouter({
+    history: createWebHashHistory(),
+    routes,
+    scrollBehavior(to, from, savedPosition) {
+      // scroll to id `can~contain-special>characters` + 200px
+      return {
+        el: '#app',
+        // top relative offset
+        top: 0
+        // instead of `offset: { y: 200 }`
+      }
+    }
+  })
+  // @ts-ignore,That is normal as the matcher is not part of the public API. You will have to use a // @ts-ignore before that line
+  router.matcher = newRouter.matcher // reset router
+}
+
+
