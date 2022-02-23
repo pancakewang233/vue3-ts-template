@@ -2,7 +2,7 @@
 import SideBar from './SideBar.vue';
 import HeaderBar from './HeaderBar.vue';
 import Mainner from './Mainner.vue';
-import adminRoutes from '@/mock/user-admin'
+const showRouter = JSON.parse(sessionStorage.getItem('route')!)
 </script>
 
 <template>
@@ -10,7 +10,7 @@ import adminRoutes from '@/mock/user-admin'
     <HeaderBar></HeaderBar>
     <div class="main">
       <SideBar>
-        123
+        <router-link :to="item.path" v-for="item in showRouter.children">{{item.meta.title}}</router-link>
       </SideBar>
       <Mainner>
         <router-view></router-view>

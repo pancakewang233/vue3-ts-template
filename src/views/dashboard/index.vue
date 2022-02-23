@@ -1,6 +1,6 @@
 <template>
  <div>
-   这里是动态图
+   这里是首页
  </div>
 </template>
 

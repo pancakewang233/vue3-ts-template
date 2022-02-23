@@ -1,29 +1,35 @@
 import {router} from './index';
+import adminRoutes from '@/mock/user-admin';
+import editorRoutes from '@/mock/user-editor';
 
 // 路由拦截器
 router.beforeEach((to, from, next) => {
-  // 添加动态title
-  typeof to.name === 'string' ? window.document.title = to.name : ''
-
+  let obj = sessionStorage.getItem('user')
+  let token = obj ? JSON.parse(obj) : null
   // 判断是否存在token
-  if (Boolean(localStorage.getItem("LOGIN_STATUS"))) {
+  if (token) {
+    if(token.username === 'admin'){
+      sessionStorage.setItem('route', JSON.stringify(adminRoutes))
+      router.addRoute(adminRoutes);
+    }else{
+      sessionStorage.setItem('route', JSON.stringify(editorRoutes))
+      router.addRoute(editorRoutes)
+    }
     if (to.path == '/login' || to.path == '/') {
       next({
-        path: '/index'
-      })
+        path: '/dashboard'
+      });
     } else {
       next();
     }
   } else {
-    if (to.matched.length != 0 && !to.meta.requireAuth) {
+    if(to.path == '/login'){
       next()
-    } else {
+    }else{
       next({
-        path: '/login',
-        query: {
-          redirect: to.fullPath
-        }
-      })
+        path: '/login'
+      });
     }
   }
-})
+});
+

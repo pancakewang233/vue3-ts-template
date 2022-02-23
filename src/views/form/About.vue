@@ -2,7 +2,7 @@
 </script>
 <template>
   <div>
-    About 页面
+    项目 2
   </div>
 </template>
 

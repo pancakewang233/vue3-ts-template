@@ -3,6 +3,7 @@ const editorRoutes =
     path: '/form',
     redirect: '/form/page',
     name: 'Form',
+    component: ()=> import('@/components/Layout.vue'),
     children: [
       {
         path: '/form/page',

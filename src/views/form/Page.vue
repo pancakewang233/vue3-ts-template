@@ -2,6 +2,6 @@
 </script>
 <template>
 <div>
-    Page 页面
+    项目 1
 </div>
 </template>

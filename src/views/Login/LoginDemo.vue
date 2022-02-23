@@ -61,6 +61,7 @@ const resetForm = (formEl: FormInstance | undefined) => {
             v-model="ruleForm.password"
             type="password"
             autocomplete="off"
+            @keyup.enter = "submitForm(ruleFormRef)"
         ></el-input>
       </el-form-item>
       <el-form-item class="button">

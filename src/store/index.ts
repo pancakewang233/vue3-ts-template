@@ -1,5 +1,5 @@
 import { defineStore, acceptHMRUpdate } from 'pinia';
-import { resetRouter } from '@/router';
+
 import { ElMessage } from 'element-plus';
 
 
@@ -51,7 +51,7 @@ export const useUserStore = defineStore({
         token: ''
       });
       sessionStorage.removeItem('user');
-      resetRouter();
+
     },
     // remove token
     resetToken() {
