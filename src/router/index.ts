@@ -1,13 +1,12 @@
-
 import adminRoutes from '@/mock/user-admin';
-import { createRouter, createWebHashHistory } from 'vue-router';
+import {createRouter, createWebHashHistory} from 'vue-router';
 
 const Page = () => import('../views/form/Page.vue');
 const About = () => import('../views/form/About.vue');
 const Login = () => import('../views/Login/Login.vue');
-const Home = () => import('../components/Layout.vue')
-const NotFound = () => import('../views/404.vue')
-const Dashboard = () => import('../views/dashboard/index.vue')
+const Home = () => import('../components/Layout.vue');
+const NotFound = () => import('../views/404.vue');
+const Dashboard = () => import('../views/dashboard/index.vue');
 
 const routes = [
   {
@@ -18,13 +17,14 @@ const routes = [
       path: '/dashboard',
       component: Dashboard,
       name: 'Dashboard',
-      meta: { title: 'Dashboard' }
+      meta: {title: 'Dashboard'}
     }]
   },
   // 只有经过身份验证的用户才能进入首页
-  { path: '/login', component: Login },
+  {path: '/login', component: Login, name: 'Login'},
   {
     path: '/404',
+    name: '404',
     component: NotFound,
     hidden: true
   },
@@ -35,6 +35,10 @@ export const router = createRouter({
   history: createWebHashHistory(),
   routes
 });
+
+router.addRoute(adminRoutes);
+const res = router.getRoutes();
+console.log('what the fuck', res);
 
 // Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
 export function resetRouter() {
@@ -48,11 +52,11 @@ export function resetRouter() {
         // top relative offset
         top: 0
         // instead of `offset: { y: 200 }`
-      }
+      };
     }
-  })
+  });
   // @ts-ignore,That is normal as the matcher is not part of the public API. You will have to use a // @ts-ignore before that line
-  router.matcher = newRouter.matcher // reset router
+  router.matcher = newRouter.matcher; // reset router
 }
 
 

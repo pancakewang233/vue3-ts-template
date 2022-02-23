@@ -3,7 +3,7 @@ import {router} from './index';
 // 路由拦截器
 router.beforeEach((to, from, next) => {
   // 添加动态title
-  window.document.title = to.name
+  typeof to.name === 'string' ? window.document.title = to.name : ''
 
   // 判断是否存在token
   if (Boolean(localStorage.getItem("LOGIN_STATUS"))) {

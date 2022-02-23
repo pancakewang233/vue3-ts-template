@@ -10,7 +10,7 @@ import adminRoutes from '@/mock/user-admin'
     <HeaderBar></HeaderBar>
     <div class="main">
       <SideBar>
-        <router-link :to="item.path" v-for="(item,index) in adminRoutes[0].children" :key="index">{{item.meta.title}}</router-link>
+        123
       </SideBar>
       <Mainner>
         <router-view></router-view>
