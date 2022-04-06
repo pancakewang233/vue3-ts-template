@@ -2,7 +2,7 @@ const editorRoutes = {
   path: "/pages",
   redirect: "/pages/page",
   name: "Form",
-  component: () => import("@/components/Layout.tsx"),
+  component: () => import("@/components/Layout"),
   children: [
     {
       path: "/pages/page",

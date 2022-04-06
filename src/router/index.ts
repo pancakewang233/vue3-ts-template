@@ -1,9 +1,9 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 
-const Login = () => import("../views/Login/Login.vue");
-const Home = () => import("../components/Layout");
-const NotFound = () => import("../views/404.vue");
-const Dashboard = () => import("../views/dashboard/index.vue");
+const Login = () => import("@/views/Login/Login.vue");
+const Home = () => import("@/components/Layout");
+const NotFound = () => import("@/views/404.vue");
+const Dashboard = () => import("@/views/dashboard/index.vue");
 
 const routes: RouteRecordRaw[] = [
   {
