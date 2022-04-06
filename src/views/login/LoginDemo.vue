@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {ref, reactive} from 'vue';
 import type {ElForm} from 'element-plus';
 import {validateName, validatePass} from './validate';
@@ -25,7 +25,7 @@ const submitForm = (formEl: FormInstance | undefined) => {
   formEl.validate((valid) => {
     if (valid) {
       user.login(ruleForm).then(() => {
-        router.push('/')
+        router.push('/dashboard')
       })
     } else {
       console.log('error submit!');
@@ -46,10 +46,10 @@ const resetForm = (formEl: FormInstance | undefined) => {
     <el-form
         ref="ruleFormRef"
         :model="ruleForm"
-        status-icon
         :rules="rules"
+        class="demo-ruleForm"
         label-width="120px"
-        class="demo-ruleForm">
+        status-icon>
       <el-form-item label="用户" prop="username">
         <el-input
             v-model="ruleForm.username"
@@ -59,8 +59,8 @@ const resetForm = (formEl: FormInstance | undefined) => {
       <el-form-item label="密码" prop="password">
         <el-input
             v-model="ruleForm.password"
-            type="password"
             autocomplete="off"
+            type="password"
             @keyup.enter = "submitForm(ruleFormRef)"
         ></el-input>
       </el-form-item>

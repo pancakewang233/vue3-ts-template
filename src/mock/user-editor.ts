@@ -1,4 +1,4 @@
-const editorRoutes = {
+const editorRoutes = [{
   path: "/pages",
   redirect: "/pages/page",
   name: "Form",
@@ -11,6 +11,6 @@ const editorRoutes = {
       component: () => import("@/views/pages/Page.vue"),
     },
   ],
-};
+}];
 
 export default editorRoutes;

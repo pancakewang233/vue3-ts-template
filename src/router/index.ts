@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 
-const Login = () => import("@/views/Login/Login.vue");
+const Login = () => import("@/views/login/Login.vue");
 const Home = () => import("@/components/Layout");
 const NotFound = () => import("@/views/404.vue");
 const Dashboard = () => import("@/views/dashboard/index.vue");
@@ -10,6 +10,7 @@ const routes: RouteRecordRaw[] = [
     path: "/",
     component: Home,
     redirect: "/dashboard",
+    meta:{},
     children: [
       {
         path: "/dashboard",
@@ -24,6 +25,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: "/404",
     name: "404",
+    meta:{},
     component: NotFound,
   },
 ];

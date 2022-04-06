@@ -1,15 +1,18 @@
-const adminRoutes = {
+const adminRoutes = [
+  {
+    path: "/dashboard",
+    redirect: "/dashboard",
+    name: "DashBoard",
+    meta:{},
+    component: () => import("@/views/dashboard/index.vue")
+  },
+  {
   path: "/pages",
-  redirect: "/pages/page",
+  redirect: "/pages/about",
   name: "Form",
+    meta:{},
   component: () => import("@/components/Layout"),
   children: [
-    {
-      path: "/pages/page",
-      name: "Page",
-      meta: { title: "Page", roles: ["admin", "editor"] },
-      component: () => import("@/views/pages/Page.vue"),
-    },
     {
       path: "/pages/about",
       name: "About",
@@ -23,6 +26,6 @@ const adminRoutes = {
       component: () => import("@/views/pages/Page2.vue"),
     },
   ],
-};
+}];
 
 export default adminRoutes;

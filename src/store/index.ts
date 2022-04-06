@@ -1,7 +1,7 @@
 import { defineStore, acceptHMRUpdate } from 'pinia';
 
 import { ElMessage } from 'element-plus';
-
+import {RouteRecordRaw} from "vue-router";
 
 type UserInfo = {
   username: string,
@@ -13,8 +13,7 @@ export const useUserStore = defineStore({
   state: () => ({
     username: 'Eduardo',
     isAdmin: true,
-    token: '',
-    dynamicRoutes: []
+    token: ''
   }),
 
   actions: {
@@ -30,14 +29,14 @@ export const useUserStore = defineStore({
         resolve();
       });
     },
-    setRoute(value: any) {
+    setRoute(value: RouteRecordRaw[]) {
       sessionStorage.setItem('route', JSON.stringify(value));
     },
     // get user info
     getInfo(value: string) {
       return new Promise(resolve => {
         if (!value) {
-          return ElMessage('Verification failed, please Login again.');
+          return ElMessage('Verification failed, please login again.');
         } else {
         }
       });
