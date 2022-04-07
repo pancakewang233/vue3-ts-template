@@ -1,29 +1,32 @@
-import {defineComponent, ref} from "vue";
+import { Menu, Document, Setting, Location } from "@element-plus/icons-vue";
+import { defineComponent, ref } from "vue";
 import { RouteRecordRaw, RouterLink } from "vue-router";
 import s from "./SideBar.module.scss";
-import {ArrowDownBold, ArrowUpBold} from "@element-plus/icons-vue";
+import SideBarItem from "./SideBarItem";
 
 export default defineComponent({
   setup() {
     const showRouter = JSON.parse(sessionStorage.getItem("route")!);
-    const toggle = ref(false);
-    const listMenu = ()=>{
-        toggle.value = !toggle.value
-    }
-      return () => (
+    const isCollapse = ref(false);
+    const handleOpen = (key: string, keyPath: string[]) => {
+      console.log('?????', key, keyPath);
+    };
+    const handleClose = (key: string, keyPath: string[]) => {
+      console.log(key, keyPath);
+    };
+    return () => (
       <div class={s.sidebar}>
-        <ul class={s.list}>
-          {showRouter.map((item: RouteRecordRaw) => (
-            <li class={s.item}>
-              <RouterLink to={item.path}>
-                {item.name}
-              </RouterLink>
-                {item.meta?.hasChildren ? <el-icon size={14} onClick={listMenu}>
-                    {toggle.value ? <ArrowUpBold/> : <ArrowDownBold/>}
-                </el-icon> : null}
-            </li>
+        <el-menu
+          default-active="2"
+          collapse={isCollapse.value}
+          open={handleOpen}
+          close={handleClose}
+          style={{ width: "100%", height: "100%" }}
+        >
+          {showRouter.map((item: RouteRecordRaw, index:Number) => (
+            <SideBarItem value={item} index={index} />
           ))}
-        </ul>
+        </el-menu>
       </div>
     );
   },
