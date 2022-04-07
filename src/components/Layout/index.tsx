@@ -8,10 +8,10 @@ export default defineComponent({
   setup() {
     return () => (
       <div class={s.home}>
-        <HeaderBar></HeaderBar>
+        <HeaderBar />
         <div class={s.main}>
-          <SideBar></SideBar>
-          <Mainner></Mainner>
+          <SideBar />
+          <Mainner class={s.right}/>
         </div>
       </div>
     );

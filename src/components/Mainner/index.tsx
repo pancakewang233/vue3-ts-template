@@ -5,7 +5,7 @@ export default defineComponent({
   setup() {
     return () => (
       <div class={s.main}>
-        <RouterView></RouterView>
+        <RouterView />
       </div>
     );
   },
