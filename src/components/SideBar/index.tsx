@@ -4,6 +4,7 @@ import {
 } from "vue-router";
 import SideBarItem from "./SideBarItem";
 import {useUserStore} from "@/store";
+import s from './SideBar.module.scss'
 export default defineComponent({
   setup() {
     const showRouter = JSON.parse(sessionStorage.getItem("route")!);
@@ -13,7 +14,8 @@ export default defineComponent({
         <el-menu
           default-active="2"
           collapse={user.isCollapse}
-          style={{ width: "100%", height: "100%" }}
+          class={s.menu}
+          collapse-transition
         >
           {showRouter.map((item: RouteRecordRaw, index: Number) => (
             <SideBarItem value={item} index={index} />
