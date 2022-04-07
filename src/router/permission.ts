@@ -18,7 +18,6 @@ router.beforeEach((to, from, next) => {
         router.addRoute(item);
         item.meta.hasChildren = item.children?.length > 0;
       });
-      console.log("fucking here", "to", to, "router", routes);
       next();
       // next({ ...to, replace: true })
     } else {
