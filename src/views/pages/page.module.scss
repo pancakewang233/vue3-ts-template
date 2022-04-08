@@ -8,4 +8,18 @@
     font-weight: bold;
     margin-bottom: 1rem;
   }
+  :global(.el-table){
+    :global(.el-table__inner-wrapper){
+      :global(.el-table__header-wrapper){
+        :global(.el-table__header){
+          width: 100% !important;
+        }
+      }
+      :global(.el-table__body-wrapper){
+        :global(.el-table__body){
+          width: 100% !important;
+        }
+      }
+    }
+  }
 }

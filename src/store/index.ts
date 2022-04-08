@@ -15,7 +15,9 @@ export const useUserStore = defineStore({
     username: 'Eduardo',
     isAdmin: true,
     token: '',
-    isCollapse: ref(false)
+    isCollapse: ref(false),
+    tableWidth: ref(0),
+    bodyWidth: ref(document.body.clientWidth)
   }),
 
   actions: {
@@ -44,6 +46,11 @@ export const useUserStore = defineStore({
       });
       sessionStorage.removeItem('user');
 
+    },
+
+    // set tableWidth
+    setTableWidth(value:number){
+      this.tableWidth = value
     },
 
     // isCollapse

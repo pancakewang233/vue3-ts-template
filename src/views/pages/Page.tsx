@@ -1,5 +1,6 @@
-import {defineComponent, reactive} from "vue";
+import {defineComponent, nextTick, reactive, ref, watch} from "vue";
 import s from './page.module.scss';
+import {useUserStore} from "@/store";
 
 type columnData = {
     date: string,
@@ -10,7 +11,7 @@ type columnData = {
 }
 
 export default defineComponent({
-  setup() {
+  setup(props, context) {
       const statusList = reactive([
           {code:'0', name:'报名失败', type:'warning'},
           {code:'1', name:'已报名', type:''},
@@ -23,21 +24,27 @@ export default defineComponent({
           {date:'2019-01-03', name:'王五', age:20, address:'广州', status:'3'},
           {date:'2019-01-04', name:'赵六', age:21, address:'深圳', status:'0'},
       ])
-      // const slots = {
-      //     default: (props: { row:columnData }) => (<el-tag type={statusList.find(item => item.code === props.row.status)?.type}>{statusList.find(item => item.code === props.row.status)?.name}</el-tag>)
-      // }
+      const tableRef = ref(null)
+      const tableWrapper = ref(null)
+      const columnWidth = ref(0)
+      setTimeout(()=>{
+          const wrapWidth = tableWrapper.value?.clientWidth
+          const sum = Object.keys(tableData[0])?.length
+          columnWidth.value = (wrapWidth - 55) / sum
+      })
+      console.log('fucking', columnWidth)
     return () => (
-      <div class={s.wrapper}>
+      <div class={s.wrapper} ref={tableWrapper}>
         <span class={s.title}>人员注册信息</span>
-        <el-table style={{width: '100%'}} data={tableData}>
-          <el-table-column type={'selection'} width={55}></el-table-column>
-          <el-table-column prop={'name'} label={'姓名'} width={120}></el-table-column>
-          <el-table-column prop={'age'} label={'年龄'} width={120}></el-table-column>
-          <el-table-column prop={'status'} label={'状态'} width={120} v-slots={
+        <el-table data={tableData} border ref={tableRef} class={s.table}>
+          <el-table-column type={'selection'} width={55} align={'center'}></el-table-column>
+          <el-table-column prop={'name'} label={'姓名'} width={columnWidth.value} sortable align={'center'}></el-table-column>
+          <el-table-column prop={'age'} label={'年龄'} width={columnWidth.value} sortable align={'center'}></el-table-column>
+          <el-table-column prop={'status'} label={'状态'} sortable align={'center'} width={columnWidth.value} v-slots={
               {default: (props: { row:columnData }) => (<el-tag type={statusList.find(item => item.code === props.row.status)?.type}>{statusList.find(item => item.code === props.row.status)?.name}</el-tag>)}
           }></el-table-column>
-          <el-table-column prop={'date'} label={'日期'} width={120}></el-table-column>
-          <el-table-column prop={'address'} label={'地址'} width={120}></el-table-column>
+          <el-table-column prop={'date'} label={'日期'} width={columnWidth.value} sortable align={'center'}></el-table-column>
+          <el-table-column prop={'address'} label={'地址'} width={columnWidth.value} sortable align={'center'}></el-table-column>
         </el-table>
       </div>
     );
