@@ -6,9 +6,10 @@ import './style.css'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import { createPinia } from 'pinia';
+import locale from 'element-plus/lib/locale/lang/zh-CN' // 引入中文解决有些组件显示英文问题
 
 createApp(App)
     .use(createPinia())
     .use(router)
-    .use(ElementPlus)
+    .use(ElementPlus, {locale})
     .mount('#app')
