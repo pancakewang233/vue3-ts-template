@@ -23,3 +23,8 @@ a{
 .router-link-active {
     color: #408dc7;
 }
+
+.el-menu:not(.el-menu--collapse) {
+    width: 200px;
+    min-height: 100%;
+  }
