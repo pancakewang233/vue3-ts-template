@@ -4,7 +4,7 @@ const adminRoutes = [
     redirect: "/dashboard",
     name: "DashBoard",
     meta: {title: '互联网医院'},
-    component: () => import("@/views/dashboard/index.vue"),
+    component: () => import("@/views/dashboard"),
   },
   {
     path: "/pages",
