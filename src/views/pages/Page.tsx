@@ -24,8 +24,8 @@ export default defineComponent({
           {date:'2019-01-03', name:'王五', age:20, address:'广州', status:'3'},
           {date:'2019-01-04', name:'赵六', age:21, address:'深圳', status:'0'},
       ])
-      const tableRef = ref<InstanceType<typeof ElTable>>()
-      const tableWrapper = ref<InstanceType<typeof HTMLElement>>()
+      const tableRef = ref<InstanceType<typeof ElTable> | null>(null)
+      const tableWrapper = ref<InstanceType<typeof HTMLElement> | null>(null)
       const columnWidth = ref(0)
       setTimeout(()=>{
           const wrapWidth = tableWrapper.value?.clientWidth || 0
