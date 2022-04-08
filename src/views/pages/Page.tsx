@@ -1,6 +1,6 @@
-import {defineComponent, nextTick, reactive, ref, watch} from "vue";
+import {defineComponent, reactive, ref} from "vue";
 import s from './page.module.scss';
-import {useUserStore} from "@/store";
+import {ElTable} from 'element-plus'
 
 type columnData = {
     date: string,
@@ -24,15 +24,14 @@ export default defineComponent({
           {date:'2019-01-03', name:'王五', age:20, address:'广州', status:'3'},
           {date:'2019-01-04', name:'赵六', age:21, address:'深圳', status:'0'},
       ])
-      const tableRef = ref(null)
-      const tableWrapper = ref(null)
+      const tableRef = ref<InstanceType<typeof ElTable>>()
+      const tableWrapper = ref<InstanceType<typeof HTMLElement>>()
       const columnWidth = ref(0)
       setTimeout(()=>{
-          const wrapWidth = tableWrapper.value?.clientWidth
+          const wrapWidth = tableWrapper.value?.clientWidth || 0
           const sum = Object.keys(tableData[0])?.length
           columnWidth.value = (wrapWidth - 55) / sum
       })
-      console.log('fucking', columnWidth)
     return () => (
       <div class={s.wrapper} ref={tableWrapper}>
         <span class={s.title}>人员注册信息</span>
