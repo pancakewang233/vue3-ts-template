@@ -4,6 +4,7 @@ import Mainner from "@/components/Mainner";
 import { defineComponent } from "vue";
 import s from "./Layout.module.scss";
 import {useUserStore} from "@/store";
+
 export default defineComponent({
   setup() {
       const isCollapse = useUserStore().isCollapse;

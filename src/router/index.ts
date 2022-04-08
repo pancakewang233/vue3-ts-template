@@ -16,7 +16,7 @@ const routes: RouteRecordRaw[] = [
         path: "/dashboard",
         component: Dashboard,
         name: "Dashboard",
-        meta: { title: "Dashboard" },
+        meta: { title: "互联网医院" },
       },
     ],
   },
@@ -25,7 +25,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: "/404",
     name: "404",
-    meta:{},
+    meta:{ title: "404"},
     component: NotFound,
   },
 ];

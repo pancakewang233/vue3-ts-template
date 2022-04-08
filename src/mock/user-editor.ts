@@ -8,7 +8,7 @@ const editorRoutes = [{
       path: "/pages/page",
       name: "Page",
       meta: { title: "Page", roles: ["admin", "editor"] },
-      component: () => import("@/views/pages/Page.vue"),
+      component: () => import("@/views/pages/Page"),
     },
   ],
 }];
