@@ -16,5 +16,6 @@
     "lib": ["esnext", "dom"]
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "exclude": ["node_modules"], // 加了这行解决引入module.scss红线的问题
   "references": [{ "path": "./tsconfig.node.json" }]
 }
