@@ -13,12 +13,15 @@ router.beforeEach((to, from, next) => {
     next();
   } else {
     if (token) {
-      user.setRoute(routes);
       routes.map((item) => {
         router.addRoute(item);
-        item.meta.hasChildren = item.children?.length > 0;
       });
-      next();
+      user.setRoute(routes);
+      if(to.matched.length === 0){
+        next({path: to.path})
+      }else{
+        next()
+      }
       // next({ ...to, replace: true })
     } else {
       next("/login");

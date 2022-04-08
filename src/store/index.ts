@@ -27,6 +27,7 @@ export const useUserStore = defineStore({
       return new Promise(resolve => {
         sessionStorage.setItem('user', JSON.stringify(userInfo));
         this.$patch({ ...userInfo });
+        resolve()
       });
     },
     setRoute(value: RouteRecordRaw[]) {
