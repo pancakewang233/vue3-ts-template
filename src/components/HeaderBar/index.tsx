@@ -9,8 +9,8 @@ export default defineComponent({
       user.setCollapse()
     }
     return () => <div class={s.wrapper}>
-      <el-icon size={24} onClick={toggle} class={s.collapseButton}><Expand /></el-icon>
-      <span>vue3 + ts 模板</span>
+      <el-icon size={20} onClick={toggle} class={s.collapseButton}><Expand /></el-icon>
+      <span class={s.title}>vue3 + ts 模板</span>
       <el-icon size={24}><Share /></el-icon>
     </div>;
   },

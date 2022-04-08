@@ -19,7 +19,6 @@ export default defineComponent({
         </el-icon>
          {!isCollapse ? <span>{props.value.name}</span> : null}
       </div>
-
     return () => (
       <div>
         {props.value?.children ? (
@@ -32,8 +31,7 @@ export default defineComponent({
           </el-sub-menu>
         ) : (
             <RouterLink to={props.value.path}>
-              <el-menu-item index="2">
-                {title}
+              <el-menu-item index="2" v-slots={title}>
               </el-menu-item>
             </RouterLink>
         )}

@@ -9,7 +9,7 @@ export default defineComponent({
       const isCollapse = useUserStore().isCollapse;
     return () => (
       <div class={s.home}>
-          <SideBar />
+          <SideBar class={s.sidebar} />
         <div class={s.main}>
             <HeaderBar />
             <Mainner />

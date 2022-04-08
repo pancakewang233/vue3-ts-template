@@ -16,6 +16,9 @@ export default defineComponent({
           collapse={user.isCollapse}
           class={s.menu}
           collapse-transition
+          background-color="#304156"
+          text-color="#fff"
+          active-text-color="#409eff"
         >
           {showRouter.map((item: RouteRecordRaw, index: Number) => (
             <SideBarItem value={item} index={index} />
