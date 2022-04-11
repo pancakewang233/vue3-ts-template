@@ -6,7 +6,7 @@ import { useUserStore } from "@/store";
 // 路由拦截器
 router.beforeEach((to, from, next) => {
   const user = useUserStore();
-  let userSession = sessionStorage.getItem("user")
+  let userSession = sessionStorage.getItem("user");
   let token = userSession ? JSON.parse(userSession) : null;
   //@ts-ignore
   window.document.title = to.meta.title ? to.meta.title : "互联网人员";
@@ -19,10 +19,10 @@ router.beforeEach((to, from, next) => {
         router.addRoute(item);
       });
       user.setRoute(routes);
-      if(to.matched.length === 0){
-        next({path: to.path})
-      }else{
-        next()
+      if (to.matched.length === 0) {
+        next({ path: to.path });
+      } else {
+        next();
       }
       // next({ ...to, replace: true })
     } else {

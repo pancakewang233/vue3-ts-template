@@ -1,10 +1,8 @@
-import {defineComponent} from "vue";
-import {
-  RouteRecordRaw,
-} from "vue-router";
+import { defineComponent } from "vue";
+import { RouteRecordRaw } from "vue-router";
 import SideBarItem from "./SideBarItem";
-import {useUserStore} from "@/store";
-import s from './SideBar.module.scss'
+import { useUserStore } from "@/store";
+import s from "./SideBar.module.scss";
 
 export default defineComponent({
   setup() {
