@@ -34,9 +34,7 @@ export default defineComponent({
                         label: {
                             show: true,
                             position: 'top',
-                            textStyle: {
-                                fontSize: 14
-                            }
+                            fontSize: 14
                         },
                         data: yData
                     }

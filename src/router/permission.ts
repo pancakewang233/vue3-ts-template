@@ -8,6 +8,7 @@ router.beforeEach((to, from, next) => {
   const user = useUserStore();
   let userSession = sessionStorage.getItem("user")
   let token = userSession ? JSON.parse(userSession) : null;
+  //@ts-ignore
   window.document.title = to.meta.title ? to.meta.title : "互联网人员";
   let routes = token?.username === "admin" ? adminRoutes : editorRoutes;
   if (to.path === "/login") {

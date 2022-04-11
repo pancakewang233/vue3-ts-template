@@ -48,12 +48,15 @@ export default defineComponent({
           <el-table-column prop={'date'} label={'日期'} width={columnWidth.value} sortable align={'center'}></el-table-column>
           <el-table-column prop={'address'} label={'地址'} width={columnWidth.value} sortable align={'center'}></el-table-column>
         </el-table>
-          <el-pagination
-              handleSizeChange={console.log('123',currentSize.value, currentPage.value)}
-              handleCurrentChange={console.log('456',currentSize.value, currentPage.value)}
-              pageSizes={[10,20,30,40]} pageSize={currentSize.value} total={total.value}
-              layout={'sizes, prev, pager, next, jumper, ->, total, slot'}>
-          </el-pagination>
+        <div class={s.page}>
+          <el-pagination 
+            background
+            layout="prev, pager, next, total"
+            total={total.value} 
+            page-size={20} 
+            >
+            </el-pagination>
+        </div>
       </div>
     );
   },
