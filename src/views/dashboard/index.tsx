@@ -1,6 +1,8 @@
 import { defineComponent,ref,onMounted } from "vue";
 import * as echarts from "echarts";
 import {tableData} from "@/mock/tableData";
+import s from './index.module.scss'
+
 export default defineComponent({
     setup() {
         const main = ref<HTMLElement | null>(null)
@@ -29,6 +31,13 @@ export default defineComponent({
                     {
                         name: '年龄',
                         type: 'line',
+                        label: {
+                            show: true,
+                            position: 'top',
+                            textStyle: {
+                                fontSize: 14
+                            }
+                        },
                         data: yData
                     }
                 ]
@@ -39,6 +48,8 @@ export default defineComponent({
         return {main}
     },
     render(){
-        return (<div ref="main" style="width: 100%; height: 400px"></div>)
+        return (<div class={s.wrapper}>
+            <div ref="main" class={s.chart}></div>
+        </div>)
     }
 });

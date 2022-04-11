@@ -3,7 +3,7 @@ const adminRoutes = [
     path: "/dashboard",
     redirect: "/dashboard",
     name: "DashBoard",
-    meta: {title: '互联网医院'},
+    meta: {title: '互联网人员'},
     component: () => import("@/views/dashboard"),
   },
   {
@@ -16,13 +16,13 @@ const adminRoutes = [
       {
         path: "/pages/page",
         name: "About",
-        meta: { title: "人员注册信息", roles: ["admin"] },
+        meta: { title: "人员报名信息", roles: ["admin"] },
         component: () => import("@/views/pages/Page"),
       },
       {
         path: "/pages/object",
         name: "Object",
-        meta: { title: "接诊信息", roles: ["admin"] },
+        meta: { title: "人员注册信息", roles: ["admin"] },
         component: () => import("@/views/pages/Object"),
       },
     ],
