@@ -6,8 +6,9 @@ import { useUserStore } from "@/store";
 // 路由拦截器
 router.beforeEach((to, from, next) => {
   const user = useUserStore();
-  // @ts-ignore
-  let token = JSON.parse(sessionStorage.getItem("user")) || null;
+  let userSession = sessionStorage.getItem("user")
+  let token = userSession ? JSON.parse(userSession) : null;
+  window.document.title = to.meta.title ? to.meta.title : "互联网人员";
   let routes = token?.username === "admin" ? adminRoutes : editorRoutes;
   if (to.path === "/login") {
     next();
