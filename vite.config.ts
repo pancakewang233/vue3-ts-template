@@ -12,5 +12,6 @@ export default defineConfig({
     },
     extensions: [".js", ".json", ".ts"], // 使用路径别名时想要省略的后缀名，可以自己 增减
   },
+  base: "./", // 部署基础路径
   plugins: [vue(), vueJsx()], // vueJsx 支持 vue-jsx 语法
 });
