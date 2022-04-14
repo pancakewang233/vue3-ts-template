@@ -30,6 +30,9 @@ const SideBarItem = defineComponent({
               ) : (
                 <RouterLink to={i.path}>
                   <el-menu-item index={`${props.index}-${cIndex}`}>
+                    <el-icon>
+                      <Location />
+                    </el-icon>
                     {i.meta?.title}
                   </el-menu-item>
                 </RouterLink>
@@ -38,7 +41,10 @@ const SideBarItem = defineComponent({
           </el-sub-menu>
         ) : (
           <RouterLink to={props.value.path}>
-            <el-menu-item index="2" v-slots={title}></el-menu-item>
+            <el-menu-item
+              index={`${props.index}`}
+              v-slots={title}
+            ></el-menu-item>
           </RouterLink>
         )}
       </div>
