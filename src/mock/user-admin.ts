@@ -27,8 +27,8 @@ const adminRoutes = [
           {
             path: "/pages/page/tech",
             name: "Tech",
-            meta: { title: "技术栈信息", roles: ["admin"] },
-            component: () => import("@/views/pages/Tech"),
+            meta: { title: "一键换肤", roles: ["admin"] },
+            component: () => import("@/views/pages/Tech.vue"),
           },
         ],
       },

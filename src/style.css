@@ -19,3 +19,19 @@ a{
     color: inherit;
     text-decoration: none;
 }
+
+/* 实现方式二 */
+/* 默认值：light */
+:root {
+    --theme-bg: #fff;
+    --theme-color: rgb(51, 50, 50);
+    --theme-img-bg: #fff;
+    --theme-boder-color: #d6d6d6;
+}
+
+/* 暗黑：dark */
+[data-theme='dark'] {
+    --theme-bg: rgb(51, 50, 50);
+    --theme-color: #fff;
+    --theme-boder-color: #fff;
+}
